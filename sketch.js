@@ -7,8 +7,8 @@ const collisionGroups = {
 
 
 // Module Aliases
-var Engine = Matter.Engine
-Render = Matter.Render,
+var Engine = Matter.Engine,
+  Render = Matter.Render,
   World = Matter.World,
   Bodies = Matter.Bodies,
   Composite = Matter.Composite,
@@ -39,7 +39,7 @@ var line;
 function setup() {
 
   height = 800;
-  width = 500;
+  width = 600;
 
   let canvas = createCanvas(width, height);
 
@@ -79,12 +79,10 @@ function setup() {
     return new Pelota(width / 2, 10, 4);
   });
 
-
-
 }
 
 function draw() {
-  background(100);
+  background(152,177,236);
   //this.pelota.mostrar();
 
 
@@ -93,9 +91,9 @@ function draw() {
   sugar.push(new Pelota(width / 2, 10, 2));
   //}
 
-  //if (mouseIsPressed) {
-  //sugar.push(new Pelota(mouseX, mouseY, 2));
-  //}
+  /* if (mouseIsPressed) {
+    sugar.push(new Pelota(mouseX, mouseY, 2));
+  } */
 
   barrera1.mostrar();
   barrera2.mostrar();
