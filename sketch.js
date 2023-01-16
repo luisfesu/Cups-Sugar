@@ -7,7 +7,7 @@ const collisionGroups = {
 
 
 // Module Aliases
-var Engine = Matter.Engine
+var Engine = Matter.Engine,
   Render = Matter.Render,
   World = Matter.World,
   Bodies = Matter.Bodies,
@@ -32,11 +32,14 @@ var vaso;
 
 var stack;
 
+var points;
+var lines;
+
 
 function setup() {
 
   height = 800;
-  width = 500;
+  width = 600;
 
   let canvas = createCanvas(width, height);
 
@@ -62,6 +65,10 @@ function setup() {
   paredVaso2 = new Barrera(135, 750, 80, 10, Math.PI);
   paredVaso3 = new Barrera(170, 700, 100, 10 , 90 * Math.PI / 180);
 
+  // lineas
+  points = [];
+  lines = [];
+
   /*
   World.add(world,
     Bodies.rectangle(200, 150, 700, 20, { isStatic: true, angle: Math.PI * 0.06})
@@ -72,25 +79,24 @@ function setup() {
     return new Pelota(width/2, 10,4);
   });
 
-
-
 }
 
 function draw() {
-  background(100);
+  background(152,177,236);
   //this.pelota.mostrar();
 
 
-  if(frameCount < 500 ) {
-    sugar.push(new Pelota(width/2,10,2));
-  }
+  // -- Azucar cae todo el rato
+  //if(frameCount < 500 ) {
+  sugar.push(new Pelota(width/2,10,2));
+  //}
 
 
 
 
-  if(mouseIsPressed) {
-    sugar.push(new Pelota(mouseX,mouseY,2));
-  }
+  /* if (mouseIsPressed) {
+    sugar.push(new Pelota(mouseX, mouseY, 2));
+  } */
 
   barrera1.mostrar();
   barrera2.mostrar();
@@ -101,4 +107,13 @@ function draw() {
 
   this.sugar.forEach((i) => i.mostrar());
 
+  // dibujar lineas con raton
+  if (mouseIsPressed) {
+    points.push({ x: mouseX, y: mouseY, px: pmouseX, py: pmouseY });
+  }
+  this.points.forEach((p) => {
+    line = new Barrera(p.x, p.y, p.x - p.px, 10);
+    lines.push(line); // añadir linea a array
+    line.mostrar();
+  });
 }

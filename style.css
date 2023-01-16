@@ -11,6 +11,17 @@ body {
 
 canvas {
   display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  padding: 60px;
+  text-align: center;
+  background-color: #4667B4;
+  color:white;
+  font-size: 30px;
+  font-family: "Audiowide", sans-serif;
 }
 
 
